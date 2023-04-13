@@ -1,4 +1,3 @@
-import "./App.css";
 import {
   PrismicRichText,
   useSinglePrismicDocument,
@@ -6,17 +5,12 @@ import {
 } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
 import { format } from "https://cdn.skypack.dev/date-fns";
-function App() {
-  const siteTitle = "The Sock Kingdom";
+
+const Home = () => {
   const [home] = useSinglePrismicDocument("home");
   const [posts] = useAllPrismicDocumentsByType("posts");
   return (
-    <div className="App">
-      <header id="page-header">
-        <a href="/">
-          <h1>{siteTitle}</h1>
-        </a>
-      </header>
+    <>
       <main id="page-content">
         {home && <PrismicRichText field={home.data.overview_text} />}
       </main>
@@ -30,7 +24,9 @@ function App() {
           return (
             <article key={JSON.stringify(item.data)}>
               <div className="box-content">
-                <PrismicRichText field={item.data.post_title} />
+                <a href="">
+                  <PrismicRichText field={item.data.post_title} />
+                </a>
                 <time
                   dateTime={prismicH
                     .asDate(item.first_publication_date)
@@ -54,9 +50,8 @@ function App() {
           );
         })}
       </div>
-      <footer id="page-footer">© 2023 The Sock Kingdom</footer>
-    </div>
+    </>
   );
-}
+};
 
-export default App;
+export default Home;
