@@ -12,15 +12,12 @@ const Home = () => {
   return (
     <>
       <main id="page-content">
-        {console.log(home)}
         {home && <PrismicRichText field={home.data.overview_text} />}
       </main>
       <div id="box-container">
         <h2>Posts</h2>
         {posts?.map((item) => {
-          const { src, srcset } = prismicH.asImageWidthSrcSet(
-            item.data.cover_image
-          );
+          const coverImage = prismicH.asImageWidthSrcSet(item.data.cover_image);
 
           return (
             <article key={JSON.stringify(item.data)}>
@@ -41,9 +38,9 @@ const Home = () => {
               </div>
               <div className="box-image">
                 <img
-                  src={src}
-                  srcSet={srcset}
-                  alt={item.data.cover_image.alt}
+                  src={coverImage.src}
+                  srcSet={coverImage.srcset}
+                  alt={coverImage.alt}
                 ></img>
               </div>
             </article>

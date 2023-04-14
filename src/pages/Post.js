@@ -23,7 +23,7 @@ const Post = () => {
   };
 
   if (prismicDoc) {
-    const { src, srcset } = prismicH.asImageWidthSrcSet(
+    const coverImage = prismicH.asImageWidthSrcSet(
       prismicDoc.data.cover_image,
       {
         duotone: ["black", "white"],
@@ -47,10 +47,10 @@ const Post = () => {
             )}
           </time>
           <img
-            src={src}
-            srcSet={srcset}
-            alt={prismicDoc.data.cover_image.alt}
-          ></img>
+            src={coverImage.src}
+            srcSet={coverImage.srcset}
+            alt={coverImage.alt}
+          />
         </header>
         <main id="post-content">
           <PrismicRichText field={prismicDoc.data.post_content} />
@@ -65,6 +65,9 @@ const Post = () => {
         <footer id="box-container">
           <h3>Authors</h3>
           {authors?.map((author) => {
+            const authorImage = prismicH.asImageWidthSrcSet(
+              author.author_image
+            );
             return (
               <div>
                 <div className="box-content">
@@ -74,10 +77,11 @@ const Post = () => {
                     {prismicH.asText(author.author_website_text)}
                   </a>
                 </div>
-                <div class="box-image">
+                <div className="box-image">
                   <img
-                    src={author.author_image.url}
-                    alt={author.author_image.alt}
+                    src={authorImage.src}
+                    srcSet={authorImage.srcset}
+                    alt={authorImage.alt}
                   />
                 </div>
               </div>
