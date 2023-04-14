@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
-import PostPage from "./pages/Posts";
+import Post from "./pages/Post";
+import Preview from "./pages/Preview";
 
 import { PrismicProvider, PrismicToolbar } from "@prismicio/react";
 import { client, repositoryName } from "./prismic";
@@ -16,7 +17,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="post" element={<PostPage />} />
+            <Route path="/post" element={<Navigate to="/" />} />
+            <Route path="/post/:uid" element={<Post />} />
+            <Route path="/preview" element={<Preview />} />
           </Route>
         </Routes>
       </BrowserRouter>
