@@ -3,7 +3,7 @@ import * as prismicH from "@prismicio/helpers";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { format } from "https://cdn.skypack.dev/date-fns";
-import { pigLatin } from "../pigLatin";
+import pigLatin from "https://cdn.skypack.dev/piglatin";
 
 const Post = () => {
   const { uid } = useParams();

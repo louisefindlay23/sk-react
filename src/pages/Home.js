@@ -16,26 +16,26 @@ const Home = () => {
       </main>
       <div id="box-container">
         <h2>Posts</h2>
-        {posts?.map((item) => {
-          const coverImage = prismicH.asImageWidthSrcSet(item.data.cover_image);
+        {posts?.map((post) => {
+          const coverImage = prismicH.asImageWidthSrcSet(post.data.cover_image);
 
           return (
-            <article key={JSON.stringify(item.data)}>
+            <article key={JSON.stringify(post.data)}>
               <div className="box-content">
-                <a href={`/post/${item.uid}`}>
-                  <PrismicRichText field={item.data.post_title} />
+                <a href={`/post/${post.uid}`}>
+                  <PrismicRichText field={post.data.post_title} />
                 </a>
                 <time
                   dateTime={prismicH
-                    .asDate(item.first_publication_date)
+                    .asDate(post.first_publication_date)
                     .toISOString()}
                 >
                   {format(
-                    prismicH.asDate(item.first_publication_date),
+                    prismicH.asDate(post.first_publication_date),
                     "dd/MM/yyyy"
                   )}
                 </time>
-                <PrismicRichText field={item.data.post_content.slice(0, 1)} />
+                <PrismicRichText field={post.data.post_content.slice(0, 1)} />
               </div>
               <div className="box-image">
                 <img
