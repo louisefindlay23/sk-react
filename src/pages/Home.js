@@ -22,8 +22,9 @@ const Home = () => {
           return (
             <article key={JSON.stringify(item.data)}>
               <div className="box-content">
-                {/* TODO: Add PrismicLink */}
-                <PrismicRichText field={item.data.post_title} />
+                <a href={`/post/${item.uid}`}>
+                  <PrismicRichText field={item.data.post_title} />
+                </a>
                 <time
                   dateTime={prismicH
                     .asDate(item.first_publication_date)

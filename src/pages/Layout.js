@@ -10,17 +10,20 @@ const Layout = () => {
         <a href="/">
           <h1>{siteTitle}</h1>
         </a>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/post">Posts</Link>
+            </li>
+          </ul>
+        </nav>
       </header>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/post">Posts</Link>
-          </li>
-        </ul>
-      </nav>
       <Outlet />
       <footer id="page-footer">© 2023 The Sock Kingdom</footer>
     </div>

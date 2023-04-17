@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
+import Page from "./pages/Page";
 import Post from "./pages/Post";
 import Preview from "./pages/Preview";
 
@@ -17,6 +18,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path="/:uid" element={<Page />} />
             <Route path="/post" element={<Navigate to="/" />} />
             <Route path="/post/:uid" element={<Post />} />
             <Route path="/preview" element={<Preview />} />

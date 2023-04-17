@@ -69,7 +69,7 @@ const Post = () => {
               author.author_image
             );
             return (
-              <div>
+              <div key={JSON.stringify(author.data)}>
                 <div className="box-content">
                   <PrismicRichText field={author.author_name} />
                   <PrismicRichText field={author.author_bio} />
