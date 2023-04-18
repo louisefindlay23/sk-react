@@ -1,3 +1,6 @@
+// TODO: Add comments
+// TODO: Add logo
+// TODO: Try and remove unneeded files
 import {
   PrismicRichText,
   useSinglePrismicDocument,

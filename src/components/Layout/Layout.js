@@ -1,6 +1,6 @@
-import "./Layout.css";
 import { Outlet } from "react-router-dom";
 import { Header, Footer } from "./components";
+import "./Layout.css";
 
 export default function Layout({ children }) {
   const siteTitle = "The Sock Kingdom";

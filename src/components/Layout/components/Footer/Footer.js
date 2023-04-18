@@ -1,4 +1,3 @@
-import { PrismicText } from "@prismicio/react";
 import "./Footer.css";
 
 export default function Footer({ siteTitle }) {

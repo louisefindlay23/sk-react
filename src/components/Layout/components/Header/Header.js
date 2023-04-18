@@ -1,5 +1,5 @@
-import "./Header.css";
 import Navigation from "./Navigation";
+import "./Header.css";
 
 export default function Header({ siteTitle }) {
   return (

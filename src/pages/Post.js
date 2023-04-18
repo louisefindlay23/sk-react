@@ -17,6 +17,7 @@ const Post = () => {
   }, [prismicDocState]);
 
   // Use HTML Serializer to render h2s as pig Latin and codespan as code
+  // TODO: Do I need to move this to a React component? See curriculum
   const htmlSerializer = {
     heading2: ({ children }) => `${pigLatin(children)}`,
     label: ({ children, node }) =>

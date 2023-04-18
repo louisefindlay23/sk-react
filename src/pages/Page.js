@@ -1,7 +1,7 @@
-import { PrismicRichText, usePrismicDocumentByUID } from "@prismicio/react";
-import * as prismicH from "@prismicio/helpers";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { PrismicRichText, usePrismicDocumentByUID } from "@prismicio/react";
+import * as prismicH from "@prismicio/helpers";
 import Layout from "components/Layout";
 
 const Page = () => {
