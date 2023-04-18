@@ -36,6 +36,12 @@ time {
   font-weight: 600;
 }
 
+/* Main Styles */
+.App {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 /* Content Box Styles */
 #box-container > div,
 #box-container > article {
@@ -80,12 +86,6 @@ time {
 .box-image img {
   min-width: 150px;
   object-fit: contain;
-}
-
-/* Main Styles */
-main {
-  max-width: 700px;
-  margin: 0 auto;
 }
 
 /* Post Styles */
