@@ -1,4 +1,4 @@
-export default function HTMLSerializer(label) {
+export default function Code(label) {
   return (
     <>
       <code class={label}></code>,

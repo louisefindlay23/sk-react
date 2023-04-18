@@ -2,10 +2,10 @@ import { PrismicRichText, usePrismicDocumentByUID } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { format } from "https://cdn.skypack.dev/date-fns";
+import { format } from "https://cdn.skypack.dev/date-fns@2.29.3";
 import pigLatin from "https://cdn.skypack.dev/piglatin";
 import Layout from "components/Layout";
-import HTMLSerializer from "components/HTMLSerializer";
+import Code from "components/Code";
 
 const Post = ({ children }) => {
   const { uid } = useParams();
@@ -21,7 +21,7 @@ const Post = ({ children }) => {
   const htmlSerializer = {
     heading2: ({ children }) => `${pigLatin(children)}`,
     label: ({ node, children }) => (
-      <HTMLSerializer label={node.data.label}>${children}</HTMLSerializer>
+      <Code label={node.data.label}>${children}</Code>
     ),
   };
 
@@ -69,6 +69,8 @@ const Post = ({ children }) => {
           </main>
           <footer id="box-container">
             <h3>Authors</h3>
+            {/* Iterate over authors to create author bio section for multiple
+            author posts */}
             {authors?.map((author) => {
               const authorImage = prismicH.asImageWidthSrcSet(
                 author.author_image

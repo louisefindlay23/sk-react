@@ -1,12 +1,10 @@
-// TODO: Add comments
-// TODO: Try and remove unneeded files
 import {
   PrismicRichText,
   useSinglePrismicDocument,
   useAllPrismicDocumentsByType,
 } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
-import { format } from "https://cdn.skypack.dev/date-fns";
+import { format } from "https://cdn.skypack.dev/date-fns@2.29.3";
 import Layout from "components/Layout";
 
 const Home = () => {
@@ -18,6 +16,7 @@ const Home = () => {
         {home && <PrismicRichText field={home.data.overview_text} />}
       </main>
       <div id="box-container">
+        {/* Iterate over posts custom type to create post list */}
         <h2>Posts</h2>
         {posts?.map((post) => {
           const coverImage = prismicH.asImageWidthSrcSet(post.data.cover_image);
@@ -33,6 +32,7 @@ const Home = () => {
                     .asDate(post.first_publication_date)
                     .toISOString()}
                 >
+                  {/* Use date-fns to extract only date and format to shortened version */}
                   {format(
                     prismicH.asDate(post.first_publication_date),
                     "dd/MM/yyyy"

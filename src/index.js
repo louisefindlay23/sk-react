@@ -14,6 +14,7 @@ export default function App() {
   return (
     <PrismicProvider client={client}>
       <BrowserRouter>
+        {/* Using React Router for Home, Pages, Posts, and Preview routes */}
         <Routes>
           <Route index element={<Home />} />
           <Route path="/:uid" element={<Page />} />
