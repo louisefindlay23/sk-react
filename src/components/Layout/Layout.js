@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   const siteTitle = "The Sock Kingdom";
 
   return (
-    <div className="App">
+    <div className="site">
       <Outlet />
       <Header siteTitle={siteTitle} />
       <main>{children}</main>

@@ -36,8 +36,8 @@ time {
   font-weight: 600;
 }
 
-/* Main Styles */
-.App {
+/* Site Styles */
+.site {
   max-width: 700px;
   margin: 0 auto;
 }
