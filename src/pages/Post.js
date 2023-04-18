@@ -1,4 +1,8 @@
-import { PrismicRichText, usePrismicDocumentByUID } from "@prismicio/react";
+import {
+  PrismicText,
+  PrismicRichText,
+  usePrismicDocumentByUID,
+} from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -19,11 +23,9 @@ const Post = ({ children }) => {
 
   // Use HTML Serializer to render h2s as pig Latin and codespan as code
   const htmlSerializer = {
-    heading2: ({ children }) => `${pigLatin(children)}`,
+    heading2: ({ children }) => <h2>`${pigLatin(children)}`</h2>,
     label: ({ node, children }) => (
-      <HTMLSerializer label={node.data.label}>
-        <code>${children}</code>
-      </HTMLSerializer>
+      <HTMLSerializer label={node.data.label}>${children}</HTMLSerializer>
     ),
   };
 
@@ -39,13 +41,10 @@ const Post = ({ children }) => {
       <Layout>
         <article>
           <header id="post-meta">
-            <h2>
-              {prismicH.asHTML(
-                prismicDoc.data.post_title,
-                null,
-                htmlSerializer
-              )}
-            </h2>
+            <PrismicText
+              field={prismicDoc.data.post_title}
+              components={htmlSerializer}
+            ></PrismicText>
             <time
               dateTime={prismicH
                 .asDate(prismicDoc.first_publication_date)
@@ -64,13 +63,10 @@ const Post = ({ children }) => {
           </header>
           <main id="post-content">
             <PrismicRichText field={prismicDoc.data.post_content} />
-            <pre>
-              {prismicH.asHTML(
-                prismicDoc.data.code_snippet,
-                null,
-                htmlSerializer
-              )}
-            </pre>
+            <PrismicRichText
+              field={prismicDoc.data.code_snippet}
+              components={htmlSerializer}
+            />
           </main>
           <footer id="box-container">
             <h3>Authors</h3>
@@ -79,7 +75,7 @@ const Post = ({ children }) => {
                 author.author_image
               );
               return (
-                <div key={JSON.stringify(author.data)}>
+                <div key={JSON.stringify(author.author_name)}>
                   <div className="box-content">
                     <PrismicRichText field={author.author_name} />
                     <PrismicRichText field={author.author_bio} />
