@@ -36,21 +36,6 @@ time {
   font-weight: 600;
 }
 
-/* Page Header Styles */
-#page-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 5px solid #000000;
-}
-
-/* Nav Styles */
-
-nav ul {
-  display: flex;
-  justify-content: space-around;
-  list-style-type: none;
-}
-
 /* Content Box Styles */
 #box-container > div,
 #box-container > article {
@@ -109,10 +94,4 @@ main {
   height: 300px;
   margin: 1rem 0 1rem 0;
   object-fit: cover;
-}
-
-/* Page Footer Styles */
-#page-footer {
-  font-weight: bold;
-  text-align: center;
 }

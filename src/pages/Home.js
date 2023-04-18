@@ -5,12 +5,13 @@ import {
 } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
 import { format } from "https://cdn.skypack.dev/date-fns";
+import Layout from "components/Layout";
 
 const Home = () => {
   const [home] = useSinglePrismicDocument("home");
   const [posts] = useAllPrismicDocumentsByType("posts");
   return (
-    <>
+    <Layout>
       <main id="page-content">
         {home && <PrismicRichText field={home.data.overview_text} />}
       </main>
@@ -42,13 +43,13 @@ const Home = () => {
                   src={coverImage.src}
                   srcSet={coverImage.srcset}
                   alt={coverImage.alt}
-                ></img>
+                />
               </div>
             </article>
           );
         })}
       </div>
-    </>
+    </Layout>
   );
 };
 
