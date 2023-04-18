@@ -5,8 +5,9 @@ import { useEffect } from "react";
 import { format } from "https://cdn.skypack.dev/date-fns";
 import pigLatin from "https://cdn.skypack.dev/piglatin";
 import Layout from "components/Layout";
+import HTMLSerializer from "components/HTMLSerializer";
 
-const Post = () => {
+const Post = ({ children }) => {
   const { uid } = useParams();
   const [prismicDoc, prismicDocState] = usePrismicDocumentByUID("posts", uid);
 
@@ -17,11 +18,13 @@ const Post = () => {
   }, [prismicDocState]);
 
   // Use HTML Serializer to render h2s as pig Latin and codespan as code
-  // TODO: Do I need to move this to a React component? See curriculum
   const htmlSerializer = {
     heading2: ({ children }) => `${pigLatin(children)}`,
-    label: ({ children, node }) =>
-      `<code class="${node.data.label}">${children}</code>`,
+    label: ({ node, children }) => (
+      <HTMLSerializer label={node.data.label}>
+        <code>${children}</code>
+      </HTMLSerializer>
+    ),
   };
 
   if (prismicDoc) {
