@@ -1,8 +1,4 @@
-import {
-  PrismicText,
-  PrismicRichText,
-  usePrismicDocumentByUID,
-} from "@prismicio/react";
+import { PrismicRichText, usePrismicDocumentByUID } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -23,7 +19,7 @@ const Post = ({ children }) => {
 
   // Use HTML Serializer to render h2s as pig Latin and codespan as code
   const htmlSerializer = {
-    heading2: ({ children }) => <h2>`${pigLatin(children)}`</h2>,
+    heading2: ({ children }) => `${pigLatin(children)}`,
     label: ({ node, children }) => (
       <HTMLSerializer label={node.data.label}>${children}</HTMLSerializer>
     ),
@@ -41,10 +37,13 @@ const Post = ({ children }) => {
       <Layout>
         <article>
           <header id="post-meta">
-            <PrismicText
-              field={prismicDoc.data.post_title}
-              components={htmlSerializer}
-            ></PrismicText>
+            <h2>
+              {prismicH.asHTML(
+                prismicDoc.data.post_title,
+                null,
+                htmlSerializer
+              )}
+            </h2>
             <time
               dateTime={prismicH
                 .asDate(prismicDoc.first_publication_date)

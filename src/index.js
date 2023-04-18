@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import Layout from "components/Layout/Layout";
 import Home from "pages/Home";
 import Page from "pages/Page";
 import Post from "pages/Post";
